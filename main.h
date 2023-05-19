@@ -32,11 +32,11 @@ linked_t *add_nodes_list(char *trs, linked_t *lists);
 char *gets_env(const char *name, char **env);
 char *handles_path(char *trs, char **env);
 
-void handles_error(char **arv, char **argc, int cmd_count, char *line,
-		char *nline);
+void handles_error(char **argv, char **arr, char *line, char *nonline,
+		int cmd_count);
 
-int exec_command(char *arge, char **env, char **argv, char *line, char *nline,
-		int command_count);
+int exec_command(char *arr, char **env, char **argv, char *line,
+		char *nonline, int command_count);
 
 char *_upstr(char *trs);
 char *conc(char *concat, char *s1, char *s2);
