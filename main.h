@@ -11,6 +11,11 @@
 #include <sys/stat.h>
 #include <limits.h>
 
+/**
+ * struct path_s - linked list structure for PATH variable
+ * @directory: directory to lookup
+ * @next: pointer to the next node
+ */
 
 typedef struct path_s
 {
@@ -57,8 +62,8 @@ char **give_token(char *line);
 void handles_ctrlc(int signal_number);
 int handles_ctrld(char *input);
 
-int tens(int x, char *z);
+int tens_holder(int x, char *y);
 int to_integer(char *y);
-char *prints_integer(int number);
+char *prints_integer(int value);
 
 #endif
