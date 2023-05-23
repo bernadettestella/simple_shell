@@ -24,6 +24,6 @@ void handles_error(char **argv, char **arr, char *line, char *nonline,
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, "Not found\n", 10);
 	free(numb);
-	free_all(line, nonline, arr);
+	all_free(line, nonline, arr);
 	exit(0);
 }

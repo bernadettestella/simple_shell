@@ -10,6 +10,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <limits.h>
+#include <stddef.h>
 
 /**
  * struct path_s - linked list structure for PATH variable
@@ -40,7 +41,7 @@ char *handles_path(char *trs, char **env);
 void handles_error(char **argv, char **arr, char *line, char *nonline,
 		int cmd_count);
 
-int exec_command(char *arr, char **env, char **argv, char *line,
+int exec_command(char **arr, char **env, char **argv, char *line,
 		char *nonline, int command_count);
 
 char *_upstr(char *trs);
@@ -54,9 +55,8 @@ void freelist(linked_t *start);
 void freetokens(char **t_array);
 void all_free(char *line, char *newline, char **t_array);
 
-void command_pormpt(void);
+void command_prompt(void);
 
-int main(int argc, char **argv, char **env);
 char **give_token(char *line);
 
 void handles_ctrlc(int signal_number);

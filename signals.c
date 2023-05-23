@@ -10,7 +10,7 @@
 
 void handles_ctrlc(int signal_number)
 {
-	void(signal_number);
+	(void)signal_number;
 
 	write(STDOUT_FILENO, "\n$ ", 3);
 
@@ -23,7 +23,7 @@ void handles_ctrlc(int signal_number)
   * Return: has no return value
   */
 
-void handles_ctrld(char *input)
+int handles_ctrld(char *input)
 {
 	free(input);
 

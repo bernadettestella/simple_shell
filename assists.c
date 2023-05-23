@@ -8,30 +8,26 @@
 
 char *_upstr(char *trs)
 {
-	int x = 0, int leng = 0;
+	int x, leng = 0;
 	char *thread;
 
 	if (trs == NULL)
 		return (NULL);
-
 	while (*(trs + x) != '\0')
 	{
 		leng++;
 		x++;
 	}
-
 	x = 0;
 	thread = malloc(sizeof(char) * leng + 1);
-
 	if (thread == NULL)
 		return (NULL);
-
 	while (*(trs + x) != '\0')
 	{
 		*(thread + x) = *(trs + x);
 		x++;
 	}
-	*(thread + x) = '\0\';
+	*(thread + x) = '\0';
 	return (thread);
 }
 
@@ -53,7 +49,6 @@ char *_conc(char *concat, char *s1, char *s2)
 		numbconcat++;
 		numbstring++;
 	}
-
 	numbstring = 0;
 	while (*(s2 + numbstring) != '\0')
 	{
@@ -61,7 +56,7 @@ char *_conc(char *concat, char *s1, char *s2)
 		numbconcat++;
 		numbstring++;
 	}
-	*(concat + numboncat) = '\0';
+	*(concat + numbconcat) = '\0';
 	return (concat);
 }
 
@@ -82,7 +77,6 @@ int _lenstr(char *st)
 		leng = leng + 1;
 		x++;
 	}
-
 	return (leng);
 }
 
@@ -113,10 +107,8 @@ char *str_conc(char *s1, char *s2)
 			return (NULL);
 		*s2 = '\0';
 	}
-
 	leng1 = _lenstr(s1);
 	leng2 = _lenstr(s2);
-
 	concat = malloc(sizeof(char) * (leng1 + leng2 + 1));
 	if (concat == NULL)
 	{
@@ -124,12 +116,11 @@ char *str_conc(char *s1, char *s2)
 		free(s2);
 		return (NULL);
 	}
-
 	return (_conc(concat, s1, s2));
 }
 
 /**
- * str_cmp - a function that compares pointers to two strings 
+ * str_cmp - a function that compares pointers to two strings
  * @s1: a pointer to the first string to be compared
  * @s2: a pointer to the second string to be compared with s1
  * Return: the negative or positive difference between the two compared strings
@@ -142,7 +133,6 @@ int str_cmp(char *s1, char *s2)
 		s1++;
 		s2++;
 	}
-
 	if ((*s1 == '\0') && (*s2 == '\0'))
 		return (0);
 	else if (*s1 > *s2)

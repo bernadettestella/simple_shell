@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **env)
 	char **t_array;
 	int cmd_number;
 
-	void(argc), void(argv);
+	(void)argc, (void)argv;
 	while (1)
 	{
 		line = NULL;
@@ -36,7 +36,7 @@ int main(int argc, char **argv, char **env)
 			free(line);
 			continue;
 		}
-		newline = _reallocate(line);
+		newline = reallocate(line);
 		if (newline == NULL)
 		{
 			free(line);
@@ -87,7 +87,7 @@ char **give_token(char *line)
 	token = strtok(line, DELIMITERS);
 	while (token != NULL)
 	{
-		copy_t = _upstrd(token);
+		copy_t = _upstr(token);
 		if (copy_t == NULL)
 		{
 			free(t_array);

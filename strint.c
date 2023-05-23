@@ -63,9 +63,9 @@ int to_integer(char *y)
 		negative = 1;
 
 	tens = tens_holder(x, y);
-	while (s[x] >= '0' && s[x] <= '9')
+	while (y[x] >= '0' && y[x] <= '9')
 	{
-		number += ((s[x] - '0') * tens);
+		number += ((y[x] - '0') * tens);
 		tens /= 10;
 		x++;
 	}
