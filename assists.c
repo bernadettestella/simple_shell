@@ -13,7 +13,6 @@ char *_upstr(char *trs)
 
 	if (trs == NULL)
 		return (NULL);
-
 	while (*(trs + x) != '\0')
 	{
 		leng++;
@@ -31,7 +30,7 @@ char *_upstr(char *trs)
 		*(thread + x) = *(trs + x);
 		x++;
 	}
-	*(thread + x) = '\0\';
+	*(thread + x) = '\0';
 	return (thread);
 }
 
@@ -40,7 +39,7 @@ char *_upstr(char *trs)
  * @concat: allocated memory spcae to concatenate the strings
  * @s1: first string
  * @s2: second string
- * Return: a pointer to the memory space thats been cncatenated
+ * Return: a pointer to the memory space thats been concatenated
  */
 
 char *_conc(char *concat, char *s1, char *s2)
@@ -129,7 +128,7 @@ char *str_conc(char *s1, char *s2)
 }
 
 /**
- * str_cmp - a function that compares pointers to two strings 
+ * str_cmp - a function that compares pointers to two strings
  * @s1: a pointer to the first string to be compared
  * @s2: a pointer to the second string to be compared with s1
  * Return: the negative or positive difference between the two compared strings
