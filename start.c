@@ -9,7 +9,7 @@
  * Return: o on success
  */
 
-int handles_exit(char *line, char *newline, char **arr, int command_count)
+int handles_exit(char *line, char *newline, char *arr, int command_count)
 {
 	int number, z = 0;
 	char *command_num;
@@ -96,7 +96,7 @@ int handles_env(char **env)
 	while (env[x] != NULL)
 	{
 		leng = _strlen(env[x]);
-		write(STDOUT_FILEN0, env[x], leng);
+		write(STDOUT_FILENO, env[x], leng);
 		write(STDOUT_FILENO, "\n", 1);
 		x++;
 	}
@@ -116,15 +116,15 @@ int handles_env(char **env)
 int builtin_checker(char **arr, char **env, char *line, char *newline,
 		int cmd_number)
 {
-	if (arr == NULL || *ar == NULL)
+	if (arr == NULL || *arr == NULL)
 		return (1);
 	if (env == NULL || *env == NULL)
 		return (1);
-	if (_strcmp((arr[0], "exit") == 0)
+	if (_strcmp((arr[0], "exit") == 0))
 		return (handles_exit(arr, newline, line, cmd_number));
 	else if (_strcmp((arr[0]), "cd") == 0)
 		return (handles_cd(arr, env));
-	else if (_strcmp((ar[0], "env") == 0)
+	else if (_strcmp((arr[0]), "env") == 0)
 		return (handles_env(env));
 	else
 		return (1);

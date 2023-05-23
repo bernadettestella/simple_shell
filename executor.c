@@ -36,11 +36,9 @@ int exec_command(char *arr, char **env, char **argv, char *line, char *newline,
 		if (arr[0][0] == '/')
 		{
 			if (stat(arr[0], &status) == -1)
-				handles_error(argv, arr, command_count, line,
-						newline);
+			handles_error(argv, arr, command_count, line, newline);
 			if (access(arr[0], X_OK) == -1)
-				handles_error(argv, arr, command_count, line,
-						newline);
+			handles_error(argv, arr, command_count, line, newline);
 			execve(arr[0], arr, NULL);
 		}
 		else

@@ -1,4 +1,4 @@
-#nclude "main.h"
+#include "main.h"
 
 /**
  * creates_linked - func that creates a linked list withsize of path variable
@@ -37,7 +37,7 @@ linked_t *creates_linked(char *trs)
 		if (nd == NULL)
 		{
 			free(temp);
-			freee(finish);
+			free(finish);
 			return (NULL);
 		}
 		temp->next = nd;
@@ -148,13 +148,13 @@ char *handles_path(char *trs, char **env)
 		write(STDERR_FILENO, "Path not found", 14);
 		_exit(0);
 	}
-	lists = create_linkedt(path);
+	lists = creates_linked(path);
 	if (lists == NULL)
 	{
 		write(STDERR_FILENO, "PATH has Issues", 15);
 		_exit(0);
 	}
-	lists = adds_nodes_list(path, lists);
+	lists = add_nodes_list(path, lists);
 	temp = lists;
 	while (temp != NULL)
 	{
