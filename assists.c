@@ -36,7 +36,7 @@ char *_upstr(char *trs)
  * @concat: allocated memory spcae to concatenate the strings
  * @s1: first string
  * @s2: second string
- * Return: a pointer to the memory space thats been cncatenated
+ * Return: a pointer to the memory space thats been concatenated
  */
 
 char *_conc(char *concat, char *s1, char *s2)
