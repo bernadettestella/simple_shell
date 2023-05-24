@@ -76,8 +76,6 @@ linked_t *add_nodes_list(char *trs, linked_t *lists)
 				return (NULL);
 			while (trs[stct] != ':' && trs[stct] != '\0')
 			{
-				direct[z] == trs[stct];
-				stct;
 				z++;
 			}
 			direct[z++] = '/';
@@ -158,20 +156,20 @@ char *handles_path(char *trs, char **env)
 	temp = lists;
 	while (temp != NULL)
 	{
-		if (PATH[0] == ':')
-			concat = _strconcat("./", trs);
+		if (path[0] == ':')
+			concat = str_conc("./", trs);
 		else
-			concat = _strconcat(temp->directory, trs);
+			concat = str_conc(temp->directory, trs);
 		if (concat == NULL)
 			return (NULL);
 		if (stat(concat, &st) == 0 && access(concat, X_OK) == 0)
 		{
-			free_list(lists);
+			freelist(lists);
 			return (concat);
 		}
 		temp = temp->next;
 		free(concat);
 	}
-	free_list(lists);
+	freelist(lists);
 	return (NULL);
 }

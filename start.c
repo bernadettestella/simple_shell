@@ -9,7 +9,7 @@
  * Return: o on success
  */
 
-int handles_exit(char *line, char *newline, char *arr, int command_count)
+int handles_exit(char **line, char *newline, char *arr, int command_count)
 {
 	int number, z = 0;
 	char *command_num;
@@ -22,17 +22,17 @@ int handles_exit(char *line, char *newline, char *arr, int command_count)
 
 	else
 	{
-		number = _atoi(array[1]);
+		number = atoi(&arr[1]);
 		if (number == -1)
 		{
 			command_num = print_int(command_count);
 			write(STDERR_FILENO, arr[0], 7);
 			write(STDERR_FILENO, command_count,
-					_strlen(command_num));
+					_lenstr(command_num));
 			write(STDERR_FILENO, ": exit: wrong number: ", 22);
 			while (arr[1][z] != '\0')
 				z++;
-			write(STDOUT_FILENO, arr[1], z);
+			write(STDOUT_FILENO, &(arr[1]), z);
 			write(STDOUT_FILENO, "\n", 1);
 			return (0);
 		}
@@ -56,10 +56,10 @@ int handles_cd(char  **arr, char **env)
 
 	if (arr[1] == NULL)
 	{
-		if (chdir(_getenv("HOME", env)) == -1)
+		if (chdir(gets_env("HOME", env)) == -1)
 		{
 			perror(arr[0]);
-			write(STERR_FILENO, "cannot cd to home\n", 18);
+			write(STDERR_FILENO, "cannot cd to home\n", 18);
 		}
 	}
 
@@ -70,7 +70,7 @@ int handles_cd(char  **arr, char **env)
 			x++;
 		cwd[x++] = '/';
 		cwd[x] = '\0';
-		new_directory = _strconcat(cwd, arr[1]);
+		new_directory = str_conc(cwd, arr[1]);
 		if (new_directory == NULL)
 			return (0);
 		if (chdir(new_directory) == -1)
@@ -120,11 +120,11 @@ int builtin_checker(char **arr, char **env, char *line, char *newline,
 		return (1);
 	if (env == NULL || *env == NULL)
 		return (1);
-	if (_strcmp((arr[0], "exit") == 0))
+	if (strcmp(arr[0], "exit") == 0)
 		return (handles_exit(arr, newline, line, cmd_number));
-	else if (_strcmp((arr[0]), "cd") == 0)
+	else if (strcmp((arr[0]), "cd") == 0)
 		return (handles_cd(arr, env));
-	else if (_strcmp((arr[0]), "env") == 0)
+	else if (strcmp((arr[0]), "env") == 0)
 		return (handles_env(env));
 	else
 		return (1);

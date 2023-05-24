@@ -11,7 +11,7 @@
  * Return: 0 if success or -1 on failure
  */
 
-int exec_command(char *arr, char **env, char **argv, char *line, char *newline,
+int exec_command(char **arr, char **env, char **argv, char *line, char *newline,
 		int command_count)
 {
 	pid_t my_pid;
@@ -36,22 +36,22 @@ int exec_command(char *arr, char **env, char **argv, char *line, char *newline,
 		if (arr[0][0] == '/')
 		{
 			if (stat(arr[0], &status) == -1)
-			handles_error(argv, arr, command_count, line, newline);
+			handles_error(arr, argv, line, newline, command_count);
 			if (access(arr[0], X_OK) == -1)
-			handles_error(argv, arr, command_count, line, newline);
+			handles_error(argv, arr, line, newline, command_count);
 			execve(arr[0], arr, NULL);
 		}
 		else
 		{
 			concat = handles_path(arr[0], env);
 			if (concat == NULL)
-				handles_error(argv, arr, command_count, line,
-						newline);
+				handles_error(argv, arr, line, newline,
+						command_count);
 			else
 				execve(concat, arr, NULL);
 		}
 	}
 	else
-		wait(&signal);
+		wait(&sign);
 	return (0);
 }

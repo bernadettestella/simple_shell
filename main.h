@@ -27,7 +27,7 @@ typedef struct path_s
 
 int _putchar(char c);
 
-int handles_exit(char *line, char *newline, char **arr, int command_count);
+int handles_exit(char **line, char *newline, char *arr, int command_count);
 int handles_cd(char **arr, char **env);
 int handles_env(char **env);
 int builtin_checker(char **arr, char **env, char *line, char *newline,
