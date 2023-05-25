@@ -32,7 +32,7 @@ char *_upstr(char *trs)
 }
 
 /**
- *_conc - function that concatenates two string
+ * _conc - function that concatenates two string
  * @concat: allocated memory spcae to concatenate the strings
  * @s1: first string
  * @s2: second string
@@ -61,7 +61,7 @@ char *_conc(char *concat, char *s1, char *s2)
 }
 
 /**
- * _lenstr - function that returns the length of a string
+ * _strlen - function that returns the length of a string
  * @st: the string parameter
  * Return: length of the string
  */

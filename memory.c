@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * _reallocate - realloactes the memory allocated to char
+  * reallocate - realloactes the memory allocated to char
   * @pointer: a pointer to an array
   *
   * Return: returns the pointer to new memory allocated
