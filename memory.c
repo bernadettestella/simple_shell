@@ -7,7 +7,7 @@
   * Return: returns the pointer to new memory allocated
   */
 
-char *_reallocate(char *pointer)
+char *reallocate(char *pointer)
 {
 	int x = 0;
 	char *new_pointer;

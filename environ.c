@@ -96,13 +96,13 @@ linked_t *add_nodes_list(char *trs, linked_t *lists)
 }
 
 /**
- * get_env - func that finds the environment variable
+ * gets_env - func that finds the environment variable
  * @title: the name of the environment var
  * @env: the environment variable to be passed
  * Return: a pointer to the environment variable
  */
 
-char *get_env(const char *title, char **env)
+char *gets_env(const char *title, char **env)
 {
 	int x = 0, z = 0;
 
@@ -140,7 +140,7 @@ char *handles_path(char *trs, char **env)
 
 	if (trs == NULL || env == NULL || *env == NULL)
 		return (NULL);
-	path = get_env("PATH", env);
+	path = gets_env("PATH", env);
 	if (path == NULL)
 	{
 		write(STDERR_FILENO, "Path not found", 14);

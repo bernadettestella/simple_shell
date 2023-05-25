@@ -29,11 +29,11 @@ int handles_exit(char **line, char *newline, char **arr, int command_count)
 		if (number == -1)
 		{
 			command_num = prints_integer(command_count);
-			write(STDERR_FILENO, arr[0], _lenstr(arr[0]));
+			write(STDERR_FILENO, arr[0], _strlen(arr[0]));
 			snprintf(count_str, sizeof(count_str), "%d",
 					command_count);
 			write(STDERR_FILENO, &command_count,
-					_lenstr(command_num));
+					_strlen(command_num));
 			write(STDERR_FILENO, ": exit: wrong number: ", 22);
 			while (arr[1][z] != '\0')
 				z++;

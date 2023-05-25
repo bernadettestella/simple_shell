@@ -66,7 +66,7 @@ char *_conc(char *concat, char *s1, char *s2)
  * Return: length of the string
  */
 
-int _lenstr(char *st)
+int _strlen(char *st)
 {
 	int leng = 0, x = 0;
 
@@ -107,8 +107,8 @@ char *str_conc(char *s1, char *s2)
 			return (NULL);
 		*s2 = '\0';
 	}
-	leng1 = _lenstr(s1);
-	leng2 = _lenstr(s2);
+	leng1 = _strlen(s1);
+	leng2 = _strlen(s2);
 	concat = malloc(sizeof(char) * (leng1 + leng2 + 1));
 	if (concat == NULL)
 	{

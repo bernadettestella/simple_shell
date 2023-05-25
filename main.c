@@ -36,7 +36,7 @@ int main(int argc, char **argv, char **env)
 			free(line);
 			continue;
 		}
-		newline = reallocate(line);
+		newline = (reallocate(line));
 		if (newline == NULL)
 		{
 			free(line);
