@@ -27,7 +27,7 @@ typedef struct path_s
 
 int _putchar(char c);
 
-int handles_exit(char **line, char *newline, char *arr, int command_count);
+int handles_exit(char **line, char *newline, char **arr, int command_count);
 int handles_cd(char **arr, char **env);
 int handles_env(char **env);
 int builtin_checker(char **arr, char **env, char *line, char *newline,
@@ -53,7 +53,7 @@ int str_cmp(char *s1, char *s2);
 char *reallocate(char *pointer);
 void freelist(linked_t *start);
 void freetokens(char **t_array);
-void all_free(char *line, char *newline, char **t_array);
+void all_free(char **line, char *newline, char **arr);
 
 void command_prompt(void);
 

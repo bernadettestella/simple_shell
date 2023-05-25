@@ -1,5 +1,7 @@
 #include "main.h"
 
+size_t _lenstr(const char *st);
+
 /**
  * handles_exit - handles the exit option from shell
  * @arr: array of commadns to be executed
@@ -9,25 +11,28 @@
  * Return: o on success
  */
 
-int handles_exit(char **line, char *newline, char *arr, int command_count)
+int handles_exit(char **line, char *newline, char **arr, int command_count)
 {
 	int number, z = 0;
 	char *command_num;
+	char count_str[20];
 
 	if (arr[1] == NULL)
 	{
-		free_all(line, newline, arr);
+		all_free(line, newline, arr);
 		exit(2);
 	}
 
 	else
 	{
-		number = atoi(&arr[1]);
+		number = atoi(arr[1]);
 		if (number == -1)
 		{
-			command_num = print_int(command_count);
-			write(STDERR_FILENO, arr[0], 7);
-			write(STDERR_FILENO, command_count,
+			command_num = prints_integer(command_count);
+			write(STDERR_FILENO, arr[0], _lenstr(arr[0]));
+			snprintf(count_str, sizeof(count_str), "%d",
+					command_count);
+			write(STDERR_FILENO, &command_count,
 					_lenstr(command_num));
 			write(STDERR_FILENO, ": exit: wrong number: ", 22);
 			while (arr[1][z] != '\0')
@@ -36,7 +41,7 @@ int handles_exit(char **line, char *newline, char *arr, int command_count)
 			write(STDOUT_FILENO, "\n", 1);
 			return (0);
 		}
-		free_all(line, arr, newline);
+		all_free(line, newline, arr);
 		_exit(number);
 	}
 }
@@ -104,13 +109,13 @@ int handles_env(char **env)
 }
 
 /**
- * builtin_checker - func to check if command exist in shell
- * @arr: array of strings to be executed
- * @env: the environment variable to be passed
- * @line: the user input
- * @newline: newline
- * @cmd_number: number of commands keyed in by the user
- * Return: 0 if command exist 1 if it doesnt exit
+ * builtin_checker - fucntion to check whether builtins exist in shell
+ * @arr: an array of strings
+ * @env: the env variable to be passed
+ * @line: the user input place
+ * @newline: input without newline character put after statements
+ * @cmd_number: the number of commands keyed in the shell by user
+ * Return: 0 if command builtin is present and 1 if absent
  */
 
 int builtin_checker(char **arr, char **env, char *line, char *newline,
@@ -120,12 +125,12 @@ int builtin_checker(char **arr, char **env, char *line, char *newline,
 		return (1);
 	if (env == NULL || *env == NULL)
 		return (1);
-	if (strcmp(arr[0], "exit") == 0)
-		return (handles_exit(arr, newline, line, cmd_number));
-	else if (strcmp((arr[0]), "cd") == 0)
+	if (str_cmp((arr[0]), "exit") == 0)
+		return (handles_exit(&line, newline, arr, cmd_number));
+	else if (str_cmp((arr[0]), "cd") == 0)
 		return (handles_cd(arr, env));
-	else if (strcmp((arr[0]), "env") == 0)
-		return (handles_env(env));
+	else if (str_cmp((arr[0]), "env") == 0)
+	return (handles_env(env));
 	else
-		return (1);
+	return (1);
 }

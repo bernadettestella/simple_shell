@@ -50,7 +50,7 @@ int main(int argc, char **argv, char **env)
 			return (0);
 		}
 		exec_command(t_array, env, argv, line, newline, cmd_number);
-		all_free(line, newline, t_array);
+		all_free(&line, newline, t_array);
 	}
 }
 

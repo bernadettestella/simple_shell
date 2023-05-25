@@ -78,17 +78,16 @@ void freetokens(char **t_array)
   * all_free - frees all the varaibles used
   * @line: the original entered
   * @newline: input without a newline character
-  * @t_array: an array of tokens
+  * @arr: an array of tokens
   *
   * Return: has no return value
   */
 
-void all_free(char *line, char *newline, char **t_array)
+void all_free(char **line, char *newline, char **arr)
 {
-	freetokens(t_array);
+	freetokens(arr);
 	free(line);
 	free(newline);
-	free(t_array);
+	free(arr);
 
 }
-

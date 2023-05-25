@@ -11,8 +11,8 @@
  * Return: 0 if success or -1 on failure
  */
 
-int exec_command(char **arr, char **env, char **argv, char *line, char *newline,
-		int command_count)
+int exec_command(char **arr, char **env, char **argv, char *line,
+		char *newline, int command_count)
 {
 	pid_t my_pid;
 	char *concat;
@@ -23,7 +23,7 @@ int exec_command(char **arr, char **env, char **argv, char *line, char *newline,
 		return (-1);
 	if (env == NULL || *env == NULL)
 		return (-1);
-	if (checks_builtin(arr, env, line, newline, command_count) == 0)
+	if (builtin_checker(arr, env, line, newline, command_count) == 0)
 		return (0);
 	my_pid = fork();
 	if (my_pid == -1)
