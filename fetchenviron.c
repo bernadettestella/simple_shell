@@ -11,7 +11,7 @@ char **get_environ(info_t *information)
 	if (!information->environ || information->env_changed)
 	{
 		information->environ = list_to_strings(information->env);
-		infrmationo->env_changed = 0;
+		information->env_changed = 0;
 	}
 
 	return (information->environ);
@@ -23,6 +23,7 @@ char **get_environ(info_t *information)
  * @information: a structure
  * Return: 1 upon  delete, 0 if otherwise
  */
+
 int _unsetenv(info_t *information, char *variab)
 {
 	list_t *node = information->env;

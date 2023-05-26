@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * get_history_file - a function that retrieves the history file
@@ -33,7 +33,7 @@ char *get_history_file(info_t *information)
 int write_history(info_t *information)
 {
 	ssize_t fd;
-	char *filename = get_history_file(info);
+	char *namefile = get_history_file(information);
 	list_t *node = NULL;
 
 	if (!namefile)

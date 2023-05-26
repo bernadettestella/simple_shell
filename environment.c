@@ -67,8 +67,8 @@ int _myunsetenv(info_t *information)
 		_eputs("Too few arguments.\n");
 		return (1);
 	}
-	for (x = 1; x <= information->argc; i++)
-		_unsetenv(information, information->argv[i]);
+	for (x = 1; x <= information->argc; x++)
+		_unsetenv(information, information->argv[x]);
 
 	return (0);
 }
@@ -86,7 +86,7 @@ int populate_env_list(info_t *information)
 	size_t x;
 
 	for (x = 0; environ[x]; x++)
-		add_node_end(&node, environ[ix, 0);
+		add_node_end(&node, environ[x], 0);
 	information->env = node;
 	return (0);
 }

@@ -99,7 +99,7 @@ char *convert_number(long int numb, int baze, int flag)
 	static char buffer[50];
 	char signs = 0;
 	char *ptrs;
-	unsigned long nl = num;
+	unsigned long nl = numb;
 
 	if (!(flag & CONVERT_UNSIGNED) && numb < 0)
 	{

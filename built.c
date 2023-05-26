@@ -7,6 +7,7 @@
  * to ensure that the function prototype remains constant
  * Return: Always 0
  */
+
 int _myhistory(info_t *information)
 {
 	print_list(information->history);
@@ -24,12 +25,12 @@ int unset_alias(info_t *information, char *string)
 	char *b, z;
 	int result;
 
-	b = _strchr(str, '=');
+	b = _strchr(string, '=');
 	if (!b)
 		return (1);
 	z = *b;
-	*p = 0;
-	result = (delete_node_at_index(&(information->alias)), get_node_index
+	*b = 0;
+	result = delete_node_at_index(&(information->alias), get_node_index
 		(information->alias, node_starts_with(information->alias,
 			string, -1)));
 	*b = z;
@@ -67,8 +68,8 @@ int print_alias(list_t *node)
 
 	if (node)
 	{
-		b = _strchr(node->string, '=');
-		for (e = node->string; a <= b; e++)
+		b = _strchr(node->str, '=');
+		for (e = node->str; e <= b; e++)
 			_putchar(*e);
 		_putchar('\'');
 		_puts(b + 1);
@@ -106,7 +107,7 @@ int _myalias(info_t *information)
 			set_alias(information, information->argv[x]);
 		else
 			print_alias(node_starts_with(information->alias,
-						information->argv[i], '='));
+						information->argv[x], '='));
 	}
 
 	return (0);

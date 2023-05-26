@@ -49,7 +49,7 @@ char **list_to_strings(list_t *head)
 		}
 
 		str = _strcpy(str, node->str);
-		strs[k] = str;
+		strs[x] = str;
 	}
 	strs[x] = NULL;
 	return (strs);
@@ -69,10 +69,10 @@ size_t print_list(const list_t *head)
 
 	while (head)
 	{
-		_puts(convert_number(h->num, 10, 0));
+		_puts(convert_number(head->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(h->str ? h->str : "(nil)");
+		_puts(head->str ? head->str : "(nil)");
 		_puts("\n");
 		head = head->next;
 		x++;
@@ -119,7 +119,7 @@ ssize_t get_node_index(list_t *head, list_t *node)
 	while (head)
 	{
 		if (head == node)
-			return (i);
+			return (x);
 		head = head->next;
 		x++;
 	}

@@ -149,5 +149,68 @@ char *_strncpy(char *destination, char *source, int f);
 char *_strncat(char *str_one, char *str_two, int f);
 char *_strchr(char *s, char v);
 
+int interactive(info_t *information);
+int is_delim(char ch, char *delimiter);
+int _isalpha(int ch);
+int _atoi(char *st);
+
+int _myhistory(info_t *information);
+int unset_alias(info_t *information, char *string);
+int set_alias(info_t *information, char *string);
+int print_alias(list_t *node);
+int _myalias(info_t *information);
+
+int _myexit(info_t *information);
+int _mycd(info_t *information);
+int _myhelp(info_t *information);
+
+int _myenv(info_t *information);
+char *_getenv(info_t *information, const char *call);
+int _mysetenv(info_t *information);
+int _myunsetenv(info_t *information);
+int populate_env_list(info_t *information);
+
+void _eputs(char *st);
+int _eputchar(char ch);
+int _putfd(char ch, int fd);
+int _putsfd(char *st, int fd);
+
+int _erratoi(char *st);
+void print_error(info_t *information,  char *str);
+int print_d(int inputs, int fd);
+char *convert_number(long int numb, int baze, int flag);
+void remove_comments(char *buff);
+
+ssize_t input_buf(info_t *information, char **buf, size_t *len);
+ssize_t get_input(info_t *information);
+ssize_t read_buf(info_t *information, char *buf, size_t *j);
+int _getline(info_t *information, char **ptr, size_t *leng);
+void sigintHandler(__attribute__((unused))int sig_num);
+
+char **get_environ(info_t *information);
+int _unsetenv(info_t *information, char *variab);
+int _setenv(info_t *information, char *variab, char *val);
+
+void clear_info(info_t *information);
+void set_info(info_t *information, char **vector);
+void free_info(info_t *information, int alls);
+
+char *get_history_file(info_t *information);
+int write_history(info_t *information);
+int read_history(info_t *information);
+int build_history_list(info_t *information, char *buf, int linecount);
+int renumber_history(info_t *information);
+
+list_t *add_node(list_t **head, const char *str, int numb);
+list_t *add_node_end(list_t **head, const char *str, int numb);
+size_t print_list_str(const list_t *head);
+int delete_node_at_index(list_t **head, unsigned int index);
+void free_list(list_t **head_ptr);
+
+size_t list_len(const list_t *head);
+char **list_to_strings(list_t *head);
+size_t print_list(const list_t *head);
+list_t *node_starts_with(list_t *node, char *prefix, char ch);
+ssize_t get_node_index(list_t *head, list_t *node);
 
 #endif

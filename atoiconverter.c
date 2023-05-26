@@ -20,8 +20,8 @@ int interactive(info_t *information)
 
 int is_delim(char ch, char *delimiter)
 {
-	while (*delimeter)
-		if (*delimeter++ == ch)
+	while (*delimiter)
+		if (*delimiter++ == ch)
 			return (1);
 	return (0);
 }
@@ -51,7 +51,7 @@ int _atoi(char *st)
 	int x, signs = 1, flag = 0, output;
 	unsigned int result = 0;
 
-	for (x = 0;  st[i] != '\0' && flag != 2; x++)
+	for (x = 0;  st[x] != '\0' && flag != 2; x++)
 	{
 		if (st[x] == '-')
 			signs *= -1;

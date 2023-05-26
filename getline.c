@@ -21,7 +21,7 @@ ssize_t input_buf(info_t *information, char **buf, size_t *len)
 #if USE_GETLINE
 		i = getline(buf, &len_p, stdin);
 #else
-		i = _getline(info, buf, &len_p);
+		i = _getline(information, buf, &len_p);
 #endif
 		if (i > 0)
 		{
@@ -32,10 +32,11 @@ ssize_t input_buf(info_t *information, char **buf, size_t *len)
 			}
 			information->linecount_flag = 1;
 			remove_comments(*buf);
-			build_history_list(info, *buf, information->histcount++);
+			build_history_list(information, *buf,
+					information->histcount++);
 			{
 				*len = i;
-				infrmationo->cmd_buf = buf;
+				information->cmd_buf = buf;
 			}
 		}
 	}
@@ -67,13 +68,13 @@ ssize_t get_input(info_t *information)
 		check_chain(information, buf, &j, x, len);
 		while (j < len)
 		{
-			if (is_chain(info, buf, &j))
+			if (is_chain(information, buf, &j))
 				break;
 			j++;
 		}
 
 		x = j + 1;
-		if (i >= len)
+		if (x >= len)
 		{
 			x = len = 0;
 			information->cmd_buf_type = CMD_NORM;
@@ -142,7 +143,7 @@ int _getline(info_t *information, char **ptr, size_t *leng)
 	if (st)
 		_strncat(new_b, buf + x, l - x);
 	else
-		_strncpy(new_p, buf + x, l - x + 1);
+		_strncpy(new_b, buf + x, l - x + 1);
 
 	st += l - x;
 	x = l;
