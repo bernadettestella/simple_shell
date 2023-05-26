@@ -80,8 +80,7 @@ char *_strchr(char *s, char v)
 		if (*s == v)
 			return (s);
 
-	}
-	while (*s++ != '\0');
+	} while (*s++ != '\0');
 
 	return (NULL);
 
