@@ -137,9 +137,9 @@ char *_strcat(char *destination, char *source);
 
 int bfree(void **mem);
 
-int is_cmd(info_t information, char *route);
+int is_cmd(info_t *information, char *route);
 char *dup_chars(char *str, int first, int last);
-char *find_path(info_t information, char *str, char *command);
+char *find_path(info_t *information, char *str, char *command);
 
 char *_memset(char *s, char b, unsigned int j);
 void ffree(char **pda);
